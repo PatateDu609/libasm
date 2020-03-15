@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libasm.h                                           :+:      :+:    :+:   */
+/*   libasm_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/15 16:02:02 by gboucett          #+#    #+#             */
-/*   Updated: 2020/03/16 00:01:32 by gboucett         ###   ########.fr       */
+/*   Created: 2020/03/16 00:01:01 by gboucett          #+#    #+#             */
+/*   Updated: 2020/03/16 00:36:05 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBASM_H
-# define LIBASM_H
+#ifndef LIBASM_BONUS_H
+# define LIBASM_BONUS_H
 
-# include <unistd.h>
+# include "libasm.h"
 
-ssize_t				ft_write(int fd, const void *buf, size_t count);
-ssize_t				ft_read(int fd, void *buf, size_t count);
-size_t				ft_strlen(const char *s);
-char				*ft_strcpy(char *dest, const char *src);
-int					ft_strcmp(const char *s1, const char *s2);
-char				*ft_strdup(const char *s);
+typedef struct		s_list
+{
+	void			*data;
+	struct s_list	*next;
+}					t_list;
+
+void				ft_list_push_front(t_list **begin_list, void *data);
+int					ft_list_size(t_list *begin_list);
 
 #endif

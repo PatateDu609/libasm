@@ -20,6 +20,10 @@ SRCS_BASENAME		=	write		\
 						strcmp		\
 						strdup		\
 
+SRCS_BONUS_BASENAME	=	list_push_front		\
+						list_size			\
+						list_sort
+
 ################################################################################
 #                             Commands and arguments                           #
 ################################################################################
@@ -38,9 +42,12 @@ ASMFLAGS			=	-fmacho64
 endif
 
 SRCS_EXT			=	$(addprefix ft_, $(addsuffix .s, $(SRCS_BASENAME)))
+SRCS_BONUS_EXT		=	$(addprefix ft_, $(addsuffix _bonus.s, $(SRCS_BONUS_BASENAME)))
 
 SRCS				=	$(addprefix $(PATH_SRCS)/, $(SRCS_EXT))
 OBJS				=	$(addprefix $(PATH_OBJS)/, $(SRCS_EXT:.s=.o))
+SRCS_BONUS			=	$(addprefix $(PATH_SRCS)/, $(SRCS_BONUS_EXT))
+OBJS_BONUS			=	$(addprefix $(PATH_OBJS)/, $(SRCS_BONUS_EXT:.s=.o))
 
 $(PATH_OBJS)/%.o:	$(PATH_SRCS)/%.s
 					$(NASM) $(ASMFLAGS) $< -o $@
@@ -48,12 +55,15 @@ $(PATH_OBJS)/%.o:	$(PATH_SRCS)/%.s
 $(NAME):			$(OBJS)
 					$(AR) $(NAME) $(OBJS)
 
-test:				$(NAME)
+bonus:				$(OBJS_BONUS) $(OBJS)
+					$(AR) $(NAME) $(OBJS_BONUS) $(OBJS)
+
+test:				all
 ifdef MAIN
 	$(CC) mains/$(MAIN) -L. -lasm -I$(PATH_INCLUDES) -fsanitize=address -no-pie -fsanitize=leak
 endif
 
-all:				$(NAME)
+all:				$(NAME) bonus
 
 clean:
 					$(RM) $(OBJS)
