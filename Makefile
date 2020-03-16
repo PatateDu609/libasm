@@ -22,21 +22,21 @@ SRCS_BASENAME		=	write		\
 
 SRCS_BONUS_BASENAME	=	list_push_front		\
 						list_size			\
-						list_sort
+						list_sort			\
 
 ################################################################################
 #                             Commands and arguments                           #
 ################################################################################
 RM					=	rm -f
 NASM				=	nasm
-AR					=	ar rcs
+AR					=	@ar rcs
 
 ################################################################################
 #                         DO NOT MODIFY BELOW THIS POINT                       #
 ################################################################################
 
 ifeq ($(shell uname), Linux)
-ASMFLAGS			=	-felf64
+ASMFLAGS			=	-felf64 -g -Fdwarf
 else
 ASMFLAGS			=	-fmacho64
 endif

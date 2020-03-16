@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 00:01:01 by gboucett          #+#    #+#             */
-/*   Updated: 2020/03/16 00:36:05 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/03/16 23:24:15 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ typedef struct		s_list
 
 void				ft_list_push_front(t_list **begin_list, void *data);
 int					ft_list_size(t_list *begin_list);
+void				ft_list_sort(t_list **begin_list, int (*cmp)());
 
 #endif
