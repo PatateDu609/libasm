@@ -23,6 +23,7 @@ SRCS_BASENAME		=	write		\
 SRCS_BONUS_BASENAME	=	list_push_front		\
 						list_size			\
 						list_sort			\
+						list_remove_if		\
 
 ################################################################################
 #                             Commands and arguments                           #
@@ -60,7 +61,7 @@ bonus:				$(OBJS_BONUS) $(OBJS)
 
 test:				all
 ifdef MAIN
-	$(CC) mains/$(MAIN) -L. -lasm -I$(PATH_INCLUDES) -fsanitize=address -no-pie -fsanitize=leak
+	$(CC) mains/$(MAIN) -L. -lasm -I$(PATH_INCLUDES) -fsanitize=address -no-pie -fsanitize=leak -g
 endif
 
 all:				$(NAME) bonus
