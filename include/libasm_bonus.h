@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 00:01:01 by gboucett          #+#    #+#             */
-/*   Updated: 2020/03/17 14:54:39 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/03/17 17:18:10 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+int					ft_atoi_base(char *str, char *base);
 void				ft_list_push_front(t_list **begin_list, void *data);
 int					ft_list_size(t_list *begin_list);
 void				ft_list_sort(t_list **begin_list, int (*cmp)());

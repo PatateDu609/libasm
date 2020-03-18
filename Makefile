@@ -24,6 +24,7 @@ SRCS_BONUS_BASENAME	=	list_push_front		\
 						list_size			\
 						list_sort			\
 						list_remove_if		\
+						atoi_base			\
 
 ################################################################################
 #                             Commands and arguments                           #
@@ -64,10 +65,10 @@ ifdef MAIN
 	$(CC) mains/$(MAIN) -L. -lasm -I$(PATH_INCLUDES) -fsanitize=address -no-pie -fsanitize=leak -g
 endif
 
-all:				$(NAME) bonus
+all:				bonus
 
 clean:
-					$(RM) $(OBJS)
+					$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean:				clean
 					$(RM) $(NAME)
