@@ -11,15 +11,16 @@
 /* ************************************************************************** */
 
 #include "libasm.h"
-#include <stdio.h>
 #include <fcntl.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
+#include <unistd.h>
 
 int		main(int ac, char **av)
 {
-	char *str = (char *)malloc(15 * sizeof(char));
+	char *str = (char *)malloc(100 * sizeof(char));
 
 	if (!str)
 		return (1);
@@ -31,7 +32,9 @@ int		main(int ac, char **av)
 		exit(1);
 	}
 	unsigned long value = ft_read(fd, str, 100);
-	printf("%s-- ret value : %ld", str, value);
-	close(fd);
+	write(1, str, value);
+	free(str);
+	if (fd > 2)
+		close(fd);
 	return (0);
 }
