@@ -20,7 +20,7 @@ int		main(int ac, char **av)
 
 	printf("src = %p\n", src);
 	printf("dest = %p\n", dest);
-	printf("ret : %s\n", ft_strcpy(dest, src));
-	printf("rdi : %s\n", dest);
+	printf("result : %s\n", ft_strcpy(dest, src));
+	printf("dest : %s\n", dest);
 	return (0);
 }
