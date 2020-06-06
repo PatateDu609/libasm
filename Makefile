@@ -63,9 +63,11 @@ bonus:				$(OBJS_BONUS) $(OBJS)
 test:				all
 ifdef MAIN
 	$(CC) mains/$(MAIN) -L. -lasm -I$(PATH_INCLUDES) -fsanitize=address -no-pie -fsanitize=leak -g
+	./a.out
+	rm a.out
 endif
 
-all:				bonus
+all:				$(NAME) bonus
 
 clean:
 					$(RM) $(OBJS) $(OBJS_BONUS)
