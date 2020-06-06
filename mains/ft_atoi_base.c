@@ -15,9 +15,9 @@
 
 int		main(int ac, char **av)
 {
-	char	*str = (ac > 2) ? av[1] : "";
+	char	*str = (ac > 2) ? av[1] : "2a";
 	char	*base = (ac > 2) ? av[2] : "0123456789abcdef";
 
-	printf("%d\n", ft_atoi_base(str, base));
+	printf("number : %s\nbase : %s\nresult : %d\n", str, base, ft_atoi_base(str, base));
 	return (0);
 }
