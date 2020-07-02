@@ -6,7 +6,7 @@
 /*   By: gboucett <gboucett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 16:05:02 by gboucett          #+#    #+#             */
-/*   Updated: 2020/03/15 19:31:21 by gboucett         ###   ########.fr       */
+/*   Updated: 2020/07/02 18:25:59 by gboucett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@ int		main(int ac, char **av)
 		return (1);
 	int fd = open("bonjour", O_RDONLY);
 	printf("fd = %d\n", fd);
-	if (fd < 0)
-	{
-		perror("error : ");
-		exit(1);
-	}
-	unsigned long value = ft_read(fd, str, 100);
+	ssize_t value = ft_read(fd, str, 100);
+	printf("%ld\n", value);
+	if (value < 0)
+		perror("error");
 	write(1, str, value);
 	free(str);
 	if (fd > 2)
