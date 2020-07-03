@@ -24,6 +24,18 @@ ft_list_remove_if:
 				cmp			[rdi], NULL
 				je			end
 
+				; if (!data_ref)
+				cmp			rsi, 0
+				je			end
+
+				; if (!cmp)
+				cmp			rdx, 0
+				je			end
+
+				; if (!free_fct)
+				cmp			rcx, 0
+				je			end
+
 				; getting *begin_list
 				mov			r9, [rdi]
 

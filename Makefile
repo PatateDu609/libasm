@@ -61,8 +61,12 @@ bonus:				$(OBJS_BONUS) $(OBJS)
 					$(AR) $(NAME) $(OBJS_BONUS) $(OBJS)
 
 test:				all
-ifdef MAIN
-	$(CC) mains/$(MAIN) -L. -lasm -I$(PATH_INCLUDES) -fsanitize=address -no-pie -fsanitize=leak -g
+ifndef BONUS
+	$(CC) tests.c -L. -lasm -I$(PATH_INCLUDES) -fsanitize=address -no-pie -fsanitize=leak -g
+	./a.out
+	rm a.out
+else
+	$(CC) tests.c -L. -lasm -I$(PATH_INCLUDES) -fsanitize=address -no-pie -fsanitize=leak -g -DBONUS=1
 	./a.out
 	rm a.out
 endif

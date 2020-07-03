@@ -4,6 +4,15 @@
 				extern		ft_strlen
 
 ft_atoi_base:
+				mov			rax, 0
+				; check base
+				cmp			rsi, 0
+				je			return
+
+				; check str
+				cmp			rdi, 0
+				je			return
+
 				push		rbx
 				; checking base
 				push		rdi
@@ -95,6 +104,8 @@ main_loop:
 end:
 				imul		rax, rbx
 				pop			rbx
+
+return:
 				ret
 
 ; int	ft_get_value(char c, char *base)

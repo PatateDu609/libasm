@@ -19,6 +19,10 @@ ft_list_sort:
 				cmp			[r8 + 8], NULL
 				je			return
 
+				; sort without function
+				cmp			rsi, 0
+				je			return
+
 				push		rdi
 				push		rsi
 				mov			rcx, r8
